@@ -1,9 +1,10 @@
 import { useCart } from "../../contexts/CartContext";
 import { toast, Bounce, ToastContainer, } from 'react-toastify'; // Import Bounce from react-toastify
 import 'react-toastify/dist/ReactToastify.css';
+import ItemBill from "./ItemBill";
 
 const Payment = () => {
-    const { totalPrice } = useCart();
+    const { state,totalPrice } = useCart();
 
     const handleToast = () => {
         
@@ -38,7 +39,12 @@ const Payment = () => {
 
     return (
         <>
-            <span className="text-lg font-semibold">Total Amount : {totalPrice}</span>
+            <span className="text-lg font-semibold mb-2">Total Amount : {totalPrice}</span>
+            {state.cart.length > 0 && <div className="flex justify-between px-6 py-2"> 
+              <span className="text-sm font-bold">items</span>
+              <span className="text-sm font-bold">price</span>
+            </div>}
+           {state.cart.map((item) => <ItemBill key={item.id} name={item.name} price={item.price} quantity={item.quantity}/>)}
             <button className="bg-orange-500 text-white p-1 px-2 rounded-xl" onClick={handleToast}>Pay</button>
             <ToastContainer />
         </>

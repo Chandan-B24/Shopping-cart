@@ -15,7 +15,7 @@ const Cart = () => {
          <div className="mt-5 bg-gray-100 p-6">
            {state.cart.length > 0 ? (state.cart.map((item) => <Items name={item.name} quantity={item.quantity} key={item.id} id={item.id} price={item.price}/>)) : <span className="text-lg font-semibold">You cart is empty please add items</span>}
         </div>
-        <div className="bg-gray-100 mt-5 p-6 flex flex-col gap-4">
+        <div className="bg-gray-100 mt-5 p-6 flex flex-col">
            <Payment/>
         </div>
          </div>
